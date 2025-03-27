@@ -12,11 +12,22 @@
 
 ## Features
 
-**Status Bar Position Configuration** — ⇄ (⊶ commit-hash)
+**Status Bar Position Configuration** — ⇄ (⊶ b1b5239)
 ↠ Added a new theme configuration to customize the status bar position by setting the `@nord_tmux_status_position` variable to `top`. This allows users to move the status bar to the top of the screen, which is useful for various workflows or personal preference.
 
 ```sh
 set -g @nord_tmux_status_position "top"
+```
+
+**Date and Time Section Control** — ⇄ (⊶ b1b5239)
+↠ Added new theme configurations to selectively disable the date and time sections in the status bar without affecting the hostname section. This allows users to customize their status bar to their specific needs by setting the `@nord_tmux_show_date` and `@nord_tmux_show_time` variables to `0`.
+
+```sh
+# Disable date section
+set -g @nord_tmux_show_date "0"
+
+# Disable time section
+set -g @nord_tmux_show_time "0"
 ```
 
 # 0.3.0

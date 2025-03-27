@@ -64,7 +64,9 @@ To automatically download and activate Nord tmux, follow the install instruction
 
 ### Configuration
 
-#### Status Bar Position
+#### Status Bar Configuration
+
+##### Position
 
 To move the status bar to the top of the screen, add the following line to your `tmux.conf`:
 
@@ -73,6 +75,22 @@ set -g @nord_tmux_status_position "top"
 ```
 
 By default, the status bar position is set by tmux (typically at the bottom of the screen).
+
+##### Date and Time Sections
+
+To disable the date section in the status bar, add the following line to your `tmux.conf`:
+
+```sh
+set -g @nord_tmux_show_date "0"
+```
+
+To disable the time section in the status bar, add the following line to your `tmux.conf`:
+
+```sh
+set -g @nord_tmux_show_time "0"
+```
+
+By default, both date and time sections are enabled. Disabling them will not affect the hostname section with its arrow.
 
 <p align="center">
   <picture>

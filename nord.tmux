@@ -9,6 +9,8 @@ NORD_TMUX_STATUS_CONTENT_OPTION="@nord_tmux_show_status_content"
 NORD_TMUX_STATUS_CONTENT_DATE_FORMAT="@nord_tmux_date_format"
 NORD_TMUX_NO_PATCHED_FONT_OPTION="@nord_tmux_no_patched_font"
 NORD_TMUX_STATUS_POSITION_OPTION="@nord_tmux_status_position"
+NORD_TMUX_SHOW_DATE_OPTION="@nord_tmux_show_date"
+NORD_TMUX_SHOW_TIME_OPTION="@nord_tmux_show_time"
 _current_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 __cleanup() {
@@ -17,10 +19,13 @@ __cleanup() {
   unset -v NORD_TMUX_STATUS_CONTENT_OPTION NORD_TMUX_NO_PATCHED_FONT_OPTION
   unset -v NORD_TMUX_STATUS_POSITION_OPTION
   unset -v NORD_TMUX_STATUS_CONTENT_DATE_FORMAT
+  unset -v NORD_TMUX_SHOW_DATE_OPTION NORD_TMUX_SHOW_TIME_OPTION
   unset -v _current_dir
   unset -f __load __cleanup
   tmux set-environment -gu NORD_TMUX_STATUS_TIME_FORMAT
   tmux set-environment -gu NORD_TMUX_STATUS_DATE_FORMAT
+  tmux set-environment -gu NORD_TMUX_SHOW_DATE
+  tmux set-environment -gu NORD_TMUX_SHOW_TIME
 }
 
 __load() {
@@ -30,6 +35,8 @@ __load() {
   local no_patched_font=$(tmux show-option -gqv "$NORD_TMUX_NO_PATCHED_FONT_OPTION")
   local date_format=$(tmux show-option -gqv "$NORD_TMUX_STATUS_CONTENT_DATE_FORMAT")
   local status_position=$(tmux show-option -gqv "$NORD_TMUX_STATUS_POSITION_OPTION")
+  local show_date=$(tmux show-option -gqv "$NORD_TMUX_SHOW_DATE_OPTION")
+  local show_time=$(tmux show-option -gqv "$NORD_TMUX_SHOW_TIME_OPTION")
 
   if [ "$(tmux show-option -gqv "clock-mode-style")" == '12' ]; then
     tmux set-environment -g NORD_TMUX_STATUS_TIME_FORMAT "%I:%M %p"
@@ -41,6 +48,18 @@ __load() {
     tmux set-environment -g NORD_TMUX_STATUS_DATE_FORMAT "%Y-%m-%d"
   else
     tmux set-environment -g NORD_TMUX_STATUS_DATE_FORMAT "$date_format"
+  fi
+
+  if [ "$show_date" == "0" ]; then
+    tmux set-environment -g NORD_TMUX_SHOW_DATE "0"
+  else
+    tmux set-environment -g NORD_TMUX_SHOW_DATE "1"
+  fi
+
+  if [ "$show_time" == "0" ]; then
+    tmux set-environment -g NORD_TMUX_SHOW_TIME "0"
+  else
+    tmux set-environment -g NORD_TMUX_SHOW_TIME "1"
   fi
 
   if [ "$status_position" == "top" ]; then
