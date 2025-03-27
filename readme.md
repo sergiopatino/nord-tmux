@@ -62,6 +62,18 @@ To automatically download and activate Nord tmux, follow the install instruction
 1. add `set -g @plugin "nordtheme/tmux"` to your [`tmux.conf`][tmux-man-tmux.conf], by default `.tmux.conf` located in your [home directory][wiki-home_dir]
 2. press the default key binding `prefix` + <kbd>I</kbd> to fetch- and install the plugin
 
+### Configuration
+
+#### Status Bar Position
+
+To move the status bar to the top of the screen, add the following line to your `tmux.conf`:
+
+```sh
+set -g @nord_tmux_status_position "top"
+```
+
+By default, the status bar position is set by tmux (typically at the bottom of the screen).
+
 <p align="center">
   <picture>
     <img src="https://raw.githubusercontent.com/nordtheme/web/main/assets/images/ports/tmux/installation-tpm.png" />

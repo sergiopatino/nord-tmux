@@ -6,6 +6,19 @@
 
 <!--lint disable no-duplicate-headings-->
 
+# 0.4.0
+
+![Release Date: 2025-03-26](https://img.shields.io/badge/Release_Date-2025--03--26-88C0D0.svg?style=flat-square)
+
+## Features
+
+**Status Bar Position Configuration** — ⇄ (⊶ commit-hash)
+↠ Added a new theme configuration to customize the status bar position by setting the `@nord_tmux_status_position` variable to `top`. This allows users to move the status bar to the top of the screen, which is useful for various workflows or personal preference.
+
+```sh
+set -g @nord_tmux_status_position "top"
+```
+
 # 0.3.0
 
 ![Release Date: 2019-06-03](https://img.shields.io/badge/Release_Date-2019--06--03-88C0D0.svg?style=flat-square) [![Project Board](https://img.shields.io/badge/Project_Board-0.03.0-88C0D0.svg?style=flat-square)](https://github.com/orgs/nordtheme/projects/1/views/10) [![Milestone](https://img.shields.io/badge/Milestone-0.03.0-88C0D0.svg?style=flat-square)](https://github.com/nordtheme/tmux/milestone/4)
